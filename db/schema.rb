@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130719173850) do
+ActiveRecord::Schema.define(version: 20130719181114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(version: 20130719173850) do
     t.datetime "updated_at"
   end
 
-  create_table "roles_users", id: false, force: true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
-  end
-
-  add_index "roles_users", ["role_id", "user_id"], name: "index_roles_users_on_role_id_and_user_id", unique: true, using: :btree
-  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
-  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
-
   create_table "telephones", force: true do |t|
     t.string   "num"
     t.integer  "user_id"
@@ -39,6 +30,18 @@ ActiveRecord::Schema.define(version: 20130719173850) do
   end
 
   add_index "telephones", ["user_id"], name: "index_telephones_on_user_id", using: :btree
+
+  create_table "user_roles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.date     "starts_on"
+    t.date     "ends_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

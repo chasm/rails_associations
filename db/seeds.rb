@@ -13,6 +13,11 @@ roles = Role.create([
   { name: "Enddy" }
 ])
 
-users[0].roles << [ roles[0], roles[2] ]
-users[1].roles << [ roles[1] ]
-users[2].roles << [ roles[0] ]
+user_roles = UserRole.create([
+  {
+    user: users[0],
+    role: roles[0],
+    starts_on: Date.today,
+    ends_on: (Date.today + 7.weeks)
+  }
+])

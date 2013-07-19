@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 
+  role_id: 
+  starts_on: 2013-07-19
+  ends_on: 2013-07-19
+
+two:
+  user_id: 
+  role_id: 
+  starts_on: 2013-07-19
+  ends_on: 2013-07-19
